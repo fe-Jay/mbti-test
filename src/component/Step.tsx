@@ -1,14 +1,10 @@
 import React from "react";
+import { StepProps } from "@/type";
 
-type StepProps = {
-  step: number;
-};
-
-const Step: React.FC<StepProps> = ({ step }) => {
+const Step: React.FC<StepProps> = ({ currentStep, totalSteps }) => {
   return (
     <div>
-      <h3>{step}/13</h3>
-      <button>다음</button>
+      <h3>{currentStep}/{totalSteps}</h3>
     </div>
   );
 };

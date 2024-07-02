@@ -1,33 +1,57 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Button from "@/component/Button";
 import Step from "@/component/Step";
+import { QuestionProps, QuestionData } from "@/type";
 
-type QuestionProps = {
-  step: number;
-  nextStep: () => void;
-};
 
-const Question: React.FC<QuestionProps> = ({ step, nextStep }) => {
+const Question: React.FC<QuestionProps> = ({ step, nextStep, answers, setAnswers }) => {
+  const [data, setData] = useState<QuestionData[]>([]);
+
+  useEffect(() => {
+    fetch('../api/questions.json')
+      .then((res) => res.json())
+      .then((data: QuestionData[]) => {
+        setData(data);
+      })
+      .catch((error) => console.error("Error loading questions:", error));
+  }, []);
+
+  if (data.length === 0) {
+    return <div>로딩중...</div>;
+  }
+
+  const { title, type, A, B } = data[step - 1] || {};
+  
+  const handleAnswer = (answer: 'A' | 'B') => {
+    const newAnswers = { ...answers };
+    console.log(answer + newAnswers);
+
+    newAnswers[type] = answers[type] + (answer === 'A' ? 1 : 0);
+
+    setAnswers(newAnswers);
+    nextStep();
+  };
+
   return (
     <>
-      <p>{step}</p>
-      <h2>문항이 이렇게이렇게</h2>
+      <Step currentStep={step} totalSteps={data.length}/>
+      <h2>{title}</h2>
 
       <Button
         type="button"
-        subject="A"
+        subject={A}
         design="black"
         onClick={() => {
-          nextStep();
+          handleAnswer('A');
         }}
       />
       <Button
         type="button"
-        subject="B"
+        subject={B}
         design="black"
         onClick={() => {
-          nextStep();
+          handleAnswer('B');
         }}
       />
     </>
