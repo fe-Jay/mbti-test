@@ -399,7 +399,7 @@ body {
   box-sizing: border-box;
   letter-spacing: -0.05rem;
   /* background: url('../src/assets/pattern.png') repeat center/100%; */
-  background: url('../src/assets/pattern.png') repeat center/50% var(--primary-color);
+  background: url('../src/assets/pattern.png') repeat center/400px var(--primary-color);
 }
 
 #root {
@@ -413,7 +413,6 @@ body {
 #root img {
   text-align: center;
   margin: 0 auto;
-  max-width: 100%;
 }
 
 @keyframes logo-spin {
