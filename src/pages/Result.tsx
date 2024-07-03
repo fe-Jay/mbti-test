@@ -1,46 +1,68 @@
-import React from "react";
-import Button from '@/component/Button';
-import { ResultProps } from "@/type";
+import React, { useEffect, useState } from "react";
 
-const results = {
-	ESTJ: { writer: 'ESTJ', img: 'ESTJ.png' },
-	ESTP: { writer: 'ESTP', img: 'ESTP.png' },
-	ESFJ: { writer: 'ESFJ', img: 'ESFJ.png' },
-	ESFP: { writer: 'ESFP', img: 'ESFP.png' },
-	ENTJ: { writer: 'ENTJ', img: 'ENTJ.png' },
-	ENTP: { writer: 'ENTP', img: 'ENTP.png' },
-	ENFJ: { writer: 'ENFJ', img: 'ENFJ.png' },
-	ENFP: { writer: 'ENFP', img: 'ENFP.png' },
-	ISTJ: { writer: 'ISTJ', img: 'ISTJ.png' },
-	ISTP: { writer: 'ISTP', img: 'ISTP.png' },
-	ISFJ: { writer: 'ISFJ', img: 'ISFJ.png' },
-	ISFP: { writer: 'ISFP', img: 'ISFP.png' },
-	INTJ: { writer: 'INTJ', img: 'INTJ.png' },
-	INTP: { writer: 'INTP', img: 'INTP.png' },
-	INFJ: { writer: 'INFJ', img: 'INFJ.png' },
-	INFP: { writer: 'INFP', img: 'INFP.png' },
-}
+import Header from "@/component/Header";
+import Watermark from "@/component/Watermark";
+import { ResultData, ResultItem, ResultProps } from "@/type";
 
 const Result: React.FC<ResultProps> = ({ answers, reStart }) => {
-	const { EI, SN, TF, JP } = answers;
-	
-	const mbti = `${EI < 2 ? 'I' : 'E'}${SN < 2 ? 'N' : 'S'}${TF < 2 ? 'F' : 'T'}${JP < 2 ? 'P' : 'J'}`;
-	const { writer, img } = results[mbti];
+  const [data, setData] = useState<ResultData>({});
 
-	return	(
-		<>
-			<h2>결과</h2>
-			<img id="img" className="" src={`asset/img/${img}`} alt={ writer } />
-			<Button
-				type="button"
-				subject="다시하기"
-				design="black"
-				onClick={() => {
-					reStart();
-				}}
-			/>
-		</>
-	);
+  useEffect(() => {
+    fetch("../api/result.json")
+      .then(res => res.json())
+      .then((data: ResultData) => {
+        setData(data);
+      })
+      .catch(error => console.error("Error loading questions:", error));
+  }, []);
+
+  if (Object.keys(data).length === 0) {
+    return <div>로딩중...</div>;
+  }
+
+  const { EI, SN, TF, JP } = answers;
+
+  const mbti = `${EI < 2 ? "I" : "E"}${SN < 2 ? "N" : "S"}${TF < 2 ? "F" : "T"}${JP < 2 ? "P" : "J"}`;
+
+  const result: ResultItem | undefined = data[mbti];
+  const { writer, img } = result;
+
+  return (
+    <section className="flex flex-col items-center justify-center">
+      <h2 className="sr-only">테스트 결과는 {writer}입니다.</h2>
+      <div className="w-full h-full bg-white border-4 border-black flex flex-col">
+        <Header type="result" />
+        <img
+          id="img"
+          className="py-10 px-0"
+          src={`../assets/result/${img}`}
+          alt={writer}
+        />
+        <div>
+          <button type="button">이미지 저장</button>
+          <button type="button">공유하기</button>
+          <button
+            type="button"
+            onClick={() => {
+              reStart();
+            }}
+          >
+            다시하기
+          </button>
+        </div>
+
+        <div>
+          <a href="" target="_blank">
+            <span>인스타그램</span>
+          </a>
+          <a href="" target="_blank">
+            <span>블로그</span>
+          </a>
+        </div>
+        <Watermark />
+      </div>
+    </section>
+  );
 };
 
 export default Result;

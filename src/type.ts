@@ -1,8 +1,8 @@
 export type AnswerType = {
-  EI: number,
-  SN: number,
-  TF: number,
-  JP: number,
+  EI: number;
+  SN: number;
+  TF: number;
+  JP: number;
 };
 
 export type StepProps = {
@@ -27,10 +27,18 @@ export type QuestionData = {
   type: keyof AnswerType;
   A: string;
   B: string;
-}
-
-export type ResultProps = {
-	answers: AnswerType;
-	reStart: () => void;
 };
 
+export type ResultProps = {
+  answers: AnswerType;
+  reStart: () => void;
+};
+
+export type ResultItem = {
+  writer: string;
+  img: string;
+};
+
+export type ResultData = {
+  [key: string]: ResultItem;
+};

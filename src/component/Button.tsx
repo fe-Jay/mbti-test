@@ -3,7 +3,8 @@ import React, { ButtonHTMLAttributes, ReactNode } from "react";
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   type: "button" | "submit" | "reset";
   subject: string;
-  design: string;
+  design: "black" | "stroke";
+  size: string;
   children?: ReactNode;
 };
 
@@ -12,14 +13,23 @@ const Button: React.FC<ButtonProps> = ({
   subject,
   design,
   onClick,
+  size,
   ...rest
 }) => {
+  let className = `py-2 px-5 my-1 text-${size} `;
+
+  switch (design) {
+    case "black":
+      className += "bg-black text-white rounded-3xl";
+      break;
+    case "stroke":
+      className +=
+        "w-full text-left bg-black text-white p-1 border-2 border-white outline-1 outline outline-black rounded-2xl lg:text-xl";
+      break;
+  }
+
   return (
-    <button
-      className="bg-black text-white py-2 px-3 rounded-3xl"
-      type={type}
-      onClick={onClick}
-    >
+    <button className={className} type={type} onClick={onClick}>
       {subject}
     </button>
   );
