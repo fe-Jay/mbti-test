@@ -20,7 +20,7 @@ const Intro: React.FC<IntroProps> = ({ nextStep }) => {
         />
         <img id="img" src={face} alt="face" className="animate-spin-slow" />
       </div>
-      <span className="relative pb-10">
+      <span className="relative mb-10">
         <Button
           type="button"
           subject="시작하기"
@@ -36,7 +36,7 @@ const Intro: React.FC<IntroProps> = ({ nextStep }) => {
           className="absolute right-[-32px] bottom-[-32px]"
         />
       </span>
-      <Watermark />
+      <Watermark size="lg"/>
     </section>
   );
 };

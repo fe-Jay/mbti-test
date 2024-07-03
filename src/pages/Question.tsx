@@ -42,21 +42,21 @@ const Question: React.FC<QuestionProps> = ({
   return (
     <section className="flex flex-col items-center justify-center h-[calc(100lvh-4rem)]">
       <h2 className="sr-only">독서모임 성격 테스트 문항</h2>
-      <div className="w-full h-full bg-white border-4 border-black flex flex-col">
+      <div className="w-full h-full max-h-[800px] bg-white border-4 border-black flex flex-col">
         <Header type="question" />
         <Step currentStep={step} totalSteps={data.length} />
 
         <img
           id="img"
-          className="animate-bounce"
+          className="animate-bounce w-[64px] min-[376px]:w-[80px] md:w-[120px]"
           src={`../assets/icon/icon_${step}.svg`}
           alt={`step ${step}`}
         />
-        <p className="py-3 lg:py-10 px-5 text-left text-lg flex-[1_0_0%] lg:text-2xl">
+        <p className="py-3 md:py-10 px-5 text-left text-lg flex-[1_0_0%] md:text-2xl">
           {title}
         </p>
 
-        <div className="px-5 flex-[1_0_0%]">
+        <div className="px-5 flex-[1_1_0%] flex flex-col justify-center">
           <Button
             type="button"
             subject={A}
@@ -75,8 +75,8 @@ const Question: React.FC<QuestionProps> = ({
               handleAnswer("B");
             }}
           />
-          <Watermark />
         </div>
+        <Watermark size="sm"/>
       </div>
     </section>
   );

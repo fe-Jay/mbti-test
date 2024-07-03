@@ -42,3 +42,14 @@ export type ResultItem = {
 export type ResultData = {
   [key: string]: ResultItem;
 };
+
+
+export type WatermarkProps = {
+  size: string;
+};
+
+export type IconButtonProps = {
+  name: string;
+  icon: string;
+  onClick: () => void;
+};
