@@ -40,7 +40,7 @@ const Question: React.FC<QuestionProps> = ({
   };
 
   return (
-    <section className="flex flex-col items-center justify-center h-[calc(100lvh-4rem)]">
+    <section className="flex flex-col items-center justify-center h-[calc(100svh-3rem)]">
       <h2 className="sr-only">독서모임 성격 테스트 문항</h2>
       <div className="w-full h-full max-h-[800px] bg-white border-4 border-black flex flex-col">
         <Header type="question" />
@@ -76,7 +76,7 @@ const Question: React.FC<QuestionProps> = ({
             }}
           />
         </div>
-        <Watermark size="sm"/>
+        <Watermark size="sm" />
       </div>
     </section>
   );

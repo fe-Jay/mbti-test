@@ -24,7 +24,7 @@ const Button: React.FC<ButtonProps> = ({
       break;
     case "stroke":
       className +=
-        "w-full text-left bg-black text-white py-4 px-2 border-2 border-white outline-1 outline outline-black rounded-2xl text-md min-[375px]:text-lg lg:text-xl";
+        "w-full text-left bg-black text-white py-4 px-2 border-2 border-white outline-1 outline outline-black rounded-2xl text-sm min-[375px]:text-sm lg:text-xl";
       break;
   }
 
