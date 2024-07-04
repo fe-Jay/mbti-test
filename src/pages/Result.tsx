@@ -98,14 +98,14 @@ const Result: React.FC<ResultProps> = ({ answers, reStart }) => {
           <a
             href="https://www.instagram.com/dog_ear_book/"
             target="_blank"
-            className="w-[25%] md:w-[18%] h-[12%] absolute bottom-[30%] left-[22%] md:left-[30%]"
+            className="w-[25%] md:w-[18%] h-[12%] absolute bottom-[18%] left-[22%] md:left-[30%]"
           >
             <span className="sr-only">인스타그램</span>
           </a>
           <a
             href="https://m.blog.naver.com/gj-dog-ear?tab=1"
             target="_blank"
-            className="w-[25%] md:w-[18%] h-[12%] absolute bottom-[30%] right-[22%] md:right-[30%]"
+            className="w-[25%] md:w-[18%] h-[12%] absolute bottom-[18%] right-[22%] md:right-[30%]"
           >
             <span className="sr-only">블로그</span>
           </a>
