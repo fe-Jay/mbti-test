@@ -1,1 +1,1 @@
-export const baseUrl = 'https://example.com'
+export const baseUrl = "https://dogear-mbti.netlify.app/";
