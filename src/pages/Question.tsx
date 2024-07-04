@@ -14,6 +14,7 @@ const Question: React.FC<QuestionProps> = ({
 }) => {
   const [data, setData] = useState<QuestionData[]>([]);
 
+  // 결과 데이터 호출
   useEffect(() => {
     fetch("../api/questions.json")
       .then(res => res.json())
@@ -29,6 +30,7 @@ const Question: React.FC<QuestionProps> = ({
 
   const { title, type, A, B } = data[step - 1] || {};
 
+  // 문항 선택 누적산
   const handleAnswer = (answer: "A" | "B") => {
     const newAnswers = { ...answers };
     console.log(answer + newAnswers);

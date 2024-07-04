@@ -2,10 +2,10 @@ import React, { useState } from "react";
 
 import Button from "@/component/Button";
 import Question from "@/pages/Question";
-import Result from './Result';
-import Intro from './Intro';
-
 import { AnswerType } from "@/type";
+
+import Intro from "./Intro";
+import Result from "./Result";
 
 const Home: React.FC = () => {
   const [step, setStep] = useState<number>(0);
@@ -17,8 +17,8 @@ const Home: React.FC = () => {
   });
 
   const nextStep = () => {
-    setStep(prev => prev + 1)
-    console.log(step, answers)
+    setStep(prev => prev + 1);
+    console.log(step, answers);
   };
   const reStart = () => {
     setStep(0);
@@ -28,19 +28,20 @@ const Home: React.FC = () => {
   return (
     <>
       {/* 시작 */}
-      {step === 0 && (
-        <Intro nextStep={nextStep} />
-      )}
+      {step === 0 && <Intro nextStep={nextStep} />}
 
       {/* 테스트 진행 */}
       {step > 0 && step < 13 && (
-        <Question step={step} nextStep={nextStep} answers={answers} setAnswers={setAnswers}></Question>
+        <Question
+          step={step}
+          nextStep={nextStep}
+          answers={answers}
+          setAnswers={setAnswers}
+        ></Question>
       )}
 
       {/* 테스트 완료 */}
-      {step === 13 && (
-          <Result answers={answers} reStart={reStart} />
-      )}
+      {step === 13 && <Result answers={answers} reStart={reStart} />}
     </>
   );
 };

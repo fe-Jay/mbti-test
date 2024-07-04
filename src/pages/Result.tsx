@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 
+import alert from "@/assets/alert.svg";
 import Header from "@/component/Header";
 import Watermark from "@/component/Watermark";
-import { ResultData, ResultItem, ResultProps } from "@/type";
-import IconButton from '../component/IconButton';
-import alert from "@/assets/alert.png";
 import { baseUrl } from "@/config";
+import { ResultData, ResultItem, ResultProps } from "@/type";
+
+import IconButton from "../component/IconButton";
 
 const Result: React.FC<ResultProps> = ({ answers, reStart }) => {
   const [data, setData] = useState<ResultData>({});
   const [showToast, setShowToast] = useState(false);
-  
+
   // 결과 데이터 호출
   useEffect(() => {
     fetch("../api/result.json")
@@ -32,24 +33,25 @@ const Result: React.FC<ResultProps> = ({ answers, reStart }) => {
 
   // 결과 이미지 저장
   const handleSaveResult = () => {
-  const link = document.createElement('a');
-  link.href = `/assets/download/result_${img}`;
-  link.download = `result_${img}`;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+    const link = document.createElement("a");
+    link.href = `/assets/download/result_${img}`;
+    link.download = `result_${img}`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   // 결과 공유
   const handleShareResult = () => {
-    navigator.clipboard.writeText(baseUrl)
+    navigator.clipboard
+      .writeText(baseUrl)
       .then(() => {
         setShowToast(true);
         setTimeout(() => {
           setShowToast(false);
         }, 3000);
       })
-      .catch(err => console.error('Failed to copy: ', err));
+      .catch(err => console.error("Failed to copy: ", err));
   };
 
   return (
@@ -96,17 +98,19 @@ const Result: React.FC<ResultProps> = ({ answers, reStart }) => {
           <a
             href="https://www.instagram.com/dog_ear_book/"
             target="_blank"
-            className="w-[25%] md:w-[18%] h-[12%] absolute bottom-[30%] left-[22%] md:left-[30%]">
+            className="w-[25%] md:w-[18%] h-[12%] absolute bottom-[30%] left-[22%] md:left-[30%]"
+          >
             <span className="sr-only">인스타그램</span>
           </a>
           <a
             href="https://m.blog.naver.com/gj-dog-ear?tab=1"
             target="_blank"
-            className="w-[25%] md:w-[18%] h-[12%] absolute bottom-[30%] right-[22%] md:right-[30%]">
+            className="w-[25%] md:w-[18%] h-[12%] absolute bottom-[30%] right-[22%] md:right-[30%]"
+          >
             <span className="sr-only">블로그</span>
           </a>
         </div>
-        <Watermark size="md"/>
+        <Watermark size="md" />
       </div>
       {showToast && (
         <div className="w-[calc(100%-2rem)] max-w-[580px] fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-black text-white p-3 rounded-xl ">
