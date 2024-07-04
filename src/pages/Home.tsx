@@ -18,7 +18,7 @@ const Home: React.FC = () => {
 
   const nextStep = () => {
     setStep(prev => prev + 1);
-    console.log(step, answers);
+    // console.log(step, answers);
   };
   const reStart = () => {
     setStep(0);

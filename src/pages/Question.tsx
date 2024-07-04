@@ -33,7 +33,7 @@ const Question: React.FC<QuestionProps> = ({
   // 문항 선택 누적산
   const handleAnswer = (answer: "A" | "B") => {
     const newAnswers = { ...answers };
-    console.log(answer + newAnswers);
+    // console.log(answer + newAnswers);
 
     newAnswers[type] = answers[type] + (answer === "A" ? 1 : 0);
 
