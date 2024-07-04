@@ -65,7 +65,7 @@ const Result: React.FC<ResultProps> = ({ answers, reStart }) => {
           src={`../assets/result/${img}`}
           alt={writer}
         />
-        <div>
+        <div className="py-5">
           <IconButton
             name="이미지 저장"
             icon="download"
@@ -89,7 +89,7 @@ const Result: React.FC<ResultProps> = ({ answers, reStart }) => {
           />
         </div>
 
-        <div className="p-10 relative">
+        <div className="px-10 pt-10  relative">
           <img
             src={alert}
             alt="광주 여성 독서모임 도그이어 구경하기"

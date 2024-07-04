@@ -18,7 +18,7 @@ const Header: React.FC<HeaderProps> = ({ type }) => {
         />
         <img
           src={ui}
-          className="absolute right-3 top-1.5 md:top-2 w-[36px] md:w-[48px] hidden min-[375px]:block"
+          className="absolute right-3 top-[50%] translate-y-[-50%] w-[36px] md:w-[48px] hidden min-[375px]:block"
         />
       </div>
       <div className="py-1 px-2 border-b-[1px] border-black text-sm md:text-lg">

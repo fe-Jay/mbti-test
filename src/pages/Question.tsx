@@ -50,11 +50,11 @@ const Question: React.FC<QuestionProps> = ({
 
         <img
           id="img"
-          className="animate-bounce w-[64px] min-[376px]:w-[80px] md:w-[120px]"
+          className="w-[64px] min-[376px]:w-[80px] md:w-[120px] pb-10"
           src={`../assets/icon/icon_${step}.svg`}
           alt={`step ${step}`}
         />
-        <p className="py-3 md:py-10 px-5 text-left text-lg flex-[1_0_0%] md:text-2xl">
+        <p className="px-5 text-left text-lg flex-[1_0_0%] md:text-2xl">
           {title}
         </p>
 
