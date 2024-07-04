@@ -9,13 +9,16 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = ({ type }) => {
   return (
     <div className="w-full text-left">
-      <div className="py-0 px-2 border-b-[1px] border-black relative text-sm md:text-lg">
+      <div className="py-0 md:py-1 px-2 border-b-[1px] border-black relative text-sm md:text-lg">
         {type === "question" && <span>독서모임 성격 테스트 중...</span>}
         {type === "result" && <span>독서모임 성격 테스트 완료</span>}
-        <img src={`../assets/header/${type}.svg`} className="inline-block" />
+        <img
+          src={`../assets/header/${type}.svg`}
+          className="inline-block w-5"
+        />
         <img
           src={ui}
-          className="absolute right-3 top-2 hidden min-[375px]:block"
+          className="absolute right-3 top-1.5 md:top-2 w-[36px] md:w-[48px] hidden min-[375px]:block"
         />
       </div>
       <div className="py-1 px-2 border-b-[1px] border-black text-sm md:text-lg">
