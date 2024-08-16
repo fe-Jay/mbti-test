@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-import alert from "@/assets/alert.svg";
 import Header from "@/component/Header";
 import Watermark from "@/component/Watermark";
 import { baseUrl } from "@/config";
 import { ResultData, ResultItem, ResultProps } from "@/type";
 
+import blog from "../assets/blog.svg";
+import booklink from "../assets/booklink.svg";
+import copyright from "../assets/copyright.svg";
+import insta from "../assets/insta.svg";
 import IconButton from "../component/IconButton";
 
 const Result: React.FC<ResultProps> = ({ answers, reStart }) => {
@@ -89,28 +92,31 @@ const Result: React.FC<ResultProps> = ({ answers, reStart }) => {
           />
         </div>
 
-        <div className="px-10 pt-10  relative">
-          <img
-            src={alert}
-            alt="광주 여성 독서모임 도그이어 구경하기"
-            className="w-full max-w-[320px] m-auto"
-          />
+        <div className="px-10 pt-7 pb-10 ">
           <a
-            href="https://www.instagram.com/dog_ear_book/"
+            href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=344708186&start=slayer"
             target="_blank"
-            className="w-[25%] md:w-[18%] h-[12%] absolute bottom-[18%] left-[22%] md:left-[30%]"
           >
-            <span className="sr-only">인스타그램</span>
-          </a>
-          <a
-            href="https://m.blog.naver.com/gj-dog-ear?tab=1"
-            target="_blank"
-            className="w-[25%] md:w-[18%] h-[12%] absolute bottom-[18%] right-[22%] md:right-[30%]"
-          >
-            <span className="sr-only">블로그</span>
+            <img
+              src={booklink}
+              alt="광주여성독서모임 책 구경하기"
+              className="w-full max-w-[360px]"
+            />
           </a>
         </div>
-        <Watermark size="md" />
+        <div className="bg-black flex justify-center items-center pt-4 pb-3 gap-4">
+          <a href="https://www.instagram.com/dog_ear_book/" target="_blank">
+            <img src={insta} alt="도그이어 인스타그램 바로가기" />
+          </a>
+          <a href="https://m.blog.naver.com/gj-dog-ear?tab=1" target="_blank">
+            <img src={blog} alt="도그이어 블로그 바로가기" />
+          </a>
+          <img
+            src={copyright}
+            alt="도그이어"
+            className="!m-0 w-full max-w-[140px]"
+          />
+        </div>
       </div>
       {showToast && (
         <div className="w-[calc(100%-2rem)] max-w-[580px] fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-black text-white p-3 rounded-xl ">
