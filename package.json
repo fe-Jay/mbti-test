@@ -16,7 +16,6 @@
     "react-router-dom": "^6.24.0"
   },
   "devDependencies": {
-    "rollup": " >=4.22.4 ",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
@@ -31,9 +30,10 @@
     "eslint-plugin-react-refresh": "^0.4.7",
     "postcss": "^8.4.39",
     "prettier": "^3.3.2",
+    "rollup": "^4.22.4",
     "tailwindcss": "^3.4.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.2.2",
-    "vite": "^5.3.1"
+    "vite": "^5.4.8"
   }
 }
